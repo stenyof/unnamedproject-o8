@@ -58,3 +58,60 @@ Além disso, utilizamos uma separação clara de responsabilidades:
 ```bash
 git clone https://github.com/stenyof/unnamedproject-o8.git
 cd unnamedproject-o8/myfinance-web-netcore
+
+Configure a base de dados
+
+No SQL Server, crie um banco de dados chamado MyFinanceWeb. Depois, execute o script de criação das tabelas manualmente (caso o EF não tenha gerado via migrations).
+
+Configure a connection string
+
+No arquivo appsettings.json, ajuste a string de conexão conforme seu ambiente:
+
+json
+Copiar
+Editar
+"ConnectionStrings": {
+  "DefaultConnection": "Server=localhost\\SQLEXPRESS;Database=MyFinanceWeb;Trusted_Connection=True;TrustServerCertificate=True;"
+}
+Rode o projeto
+
+bash
+Copiar
+Editar
+dotnet run
+Acesse em: http://localhost:5112
+
+📊 Funcionalidades Implementadas
+ CRUD de Plano de Contas
+
+ CRUD de Transações
+
+ Relatórios com gráficos de:
+
+Total por mês (barra)
+
+Distribuição por plano de conta (pizza)
+
+📁 Organização das Pastas
+pgsql
+Copiar
+Editar
+├── Controllers/
+├── Domain/
+├── Infrastructure/
+│   └── Entities/
+├── Services/
+├── Views/
+│   ├── PlanoConta/
+│   ├── Transacao/
+│   └── Relatorio/
+├── wwwroot/
+├── appsettings.json
+├── MyFinanceDbContext.cs
+📄 Licença
+Este projeto é acadêmico e não possui fins comerciais. Utilização livre para fins educacionais.
+
+👨‍💻 Autor
+Stenyo Fonseca
+Pós-graduação em Engenharia de Software - PUC Minas
+GitHub: stenyof
