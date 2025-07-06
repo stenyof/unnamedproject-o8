@@ -55,31 +55,26 @@ Além disso, utilizamos uma separação clara de responsabilidades:
 
 1. **Clone o repositório**
 
-```bash
 git clone https://github.com/stenyof/unnamedproject-o8.git
 cd unnamedproject-o8/myfinance-web-netcore
 
-Configure a base de dados
+2. **Configure a base de dados**
 
 No SQL Server, crie um banco de dados chamado MyFinanceWeb. Depois, execute o script de criação das tabelas manualmente (caso o EF não tenha gerado via migrations).
 
-Configure a connection string
+3. **Configure a connection string**
 
 No arquivo appsettings.json, ajuste a string de conexão conforme seu ambiente:
 
-json
-Copiar
-Editar
 "ConnectionStrings": {
   "DefaultConnection": "Server=localhost\\SQLEXPRESS;Database=MyFinanceWeb;Trusted_Connection=True;TrustServerCertificate=True;"
 }
-Rode o projeto
 
-bash
-Copiar
-Editar
+4. **Rode o projeto**
+
 dotnet run
-Acesse em: http://localhost:5112
+
+5. **Acesse em: http://localhost:5112**
 
 📊 Funcionalidades Implementadas
  CRUD de Plano de Contas
