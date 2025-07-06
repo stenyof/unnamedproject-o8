@@ -1,0 +1,85 @@
+@{
+    ViewData["Title"] = "Relatórios";
+    var meses = (List<string>)ViewBag.Meses;
+    var valoresMes = (List<decimal>)ViewBag.ValoresMes;
+
+    var planos = (List<string>)ViewBag.Planos;
+    var valoresPlano = (List<decimal>)ViewBag.ValoresPlano;
+}
+
+<h2>Relatórios</h2>
+
+<style>
+    .chart-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    .chart-box {
+        flex: 1 1 45%;
+        max-width: 48%;
+        background-color: #f9f9f9;
+        padding: 16px;
+        border-radius: 8px;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    }
+
+    canvas {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    @@media (max-width: 768px) {
+        .chart-box {
+            flex-basis: 100%;
+            max-width: 100%;
+        }
+    }
+</style>
+
+<div class="chart-container">
+    <div class="chart-box">
+        <h4>Total por Mês</h4>
+        <canvas id="graficoMes"></canvas>
+    </div>
+    <div class="chart-box">
+        <h4>Distribuição por Plano de Conta</h4>
+        <canvas id="graficoPlanoConta"></canvas>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const graficoMes = new Chart(document.getElementById('graficoMes').getContext('2d'), {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(meses)),
+            datasets: [{
+                label: 'Total por Mês',
+                data: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(valoresMes)),
+                backgroundColor: 'rgba(54, 162, 235, 0.5)'
+            }]
+        }
+    });
+
+    const graficoPlano = new Chart(document.getElementById('graficoPlanoConta').getContext('2d'), {
+        type: 'pie',
+        data: {
+            labels: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(planos)),
+            datasets: [{
+                label: 'Distribuição por Plano de Conta',
+                data: @Html.Raw(System.Text.Json.JsonSerializer.Serialize(valoresPlano)),
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(153, 102, 255, 0.5)'
+                ]
+            }]
+        }
+    });
+</script>
