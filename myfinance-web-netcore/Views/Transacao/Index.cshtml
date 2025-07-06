@@ -1,0 +1,37 @@
+@model IEnumerable<myfinance_web_netcore.Domain.TransacaoModel>
+
+@{
+    ViewData["Title"] = "Transações";
+}
+
+<h1>Transações</h1>
+
+<p>
+    <a class="btn btn-primary" asp-action="Cadastro">Nova Transação</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Histórico</th>
+            <th>Data</th>
+            <th>Valor</th>
+            <th>Plano de Conta</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@item.Historico</td>
+            <td>@item.DataTransacao.ToString("dd/MM/yyyy")</td>
+            <td>@item.Valor.ToString("C")</td>
+            <td>@item.PlanoContaNome</td>
+            <td>
+                <a class="btn btn-sm btn-warning" asp-action="Cadastro" asp-route-id="@item.Id">Editar</a> |
+                <a class="btn btn-sm btn-danger" asp-action="Excluir" asp-route-id="@item.Id">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
