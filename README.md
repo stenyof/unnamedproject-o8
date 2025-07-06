@@ -103,10 +103,11 @@ Editar
 ├── wwwroot/
 ├── appsettings.json
 ├── MyFinanceDbContext.cs
-📄 Licença
+
+**📄 Licença**
 Este projeto é acadêmico e não possui fins comerciais. Utilização livre para fins educacionais.
 
-👨‍💻 Autor
+**👨‍💻 Autor**
 Stenyo Fonseca
 Pós-graduação em Engenharia de Software - PUC Minas
 GitHub: stenyof
